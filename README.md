@@ -20,6 +20,8 @@ public class PrintName {
 
         System.out.println("NAME");
         print(i+1, n);
+
+        // Notice the extra parameter 'i' being used to measure the recursive calls. This is called parameterized recursion.
     }
 
     public static void main(Sting[] args) {
@@ -29,4 +31,27 @@ public class PrintName {
         print(1, n); // call the function print to print name "n" times.
     }
 }
+```
+
+#### Print N to 1 using recursion.
+
+```java
+public class PrintName {
+    static void print(int n) {
+        if (n < 1) return;
+
+        System.out.println(n);
+        print(n-1);
+
+        // Notice there are no extra parameters in the function call other than 'n'. This is functional recursion.
+    }
+
+    public static void main(Sting[] args) {
+        Scanner sc = new Scanner;
+        int n = sc.nextInt(); // take the input for number of times function will run
+
+        print(n); // call the function print to print n to 1.
+    }
+}
+
 ```
