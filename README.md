@@ -8,3 +8,25 @@
 -   Therefore, it's important to terminate a recursive method. Else, there will be a memory overflow.
 -   A recursive function calls itself with a slightly better/solved/simpler version of the problem.
 -   The smaller problems should terminate or converge on the base case. At the base case, the function encounters a subtask which it can solve without calling itself.
+
+## Some Examples
+
+#### Print "NAME" n times using recursion.
+
+```java
+public class PrintName {
+    static void print(int i, int n) {
+        if (i > n) return;
+
+        System.out.println("NAME");
+        print(i+1, n);
+    }
+
+    public static void main(Sting[] args) {
+        Scanner sc = new Scanner;
+        int n = sc.nextInt(); // take the input for number of times function will run
+
+        print(1, n); // call the function print to print name "n" times.
+    }
+}
+```
