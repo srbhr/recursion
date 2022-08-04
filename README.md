@@ -87,3 +87,23 @@ There are four types of recursion:
 
 > A function is called tail recursive, if the recursive call is **not** the last thing done by the function. After returning the function call there is some work to evaluate.
 > ![](src/images/non_tail_recursion_1.png)
+> After calling the return on fun(0), control will come back to fun(1) where it'll evaluate the lines `printf("%d", n);`
+
+Note: **Important Example of a Non-tail Recursive Function**
+
+```C
+
+int fun(int n) {
+    if (n == 1)
+        return;
+    else
+        return 1+fun(n/2);
+}
+
+int main() {
+    printf("%d", fun(8));
+    return 0;
+}
+```
+
+This is a non-tail recursive function as in the else statement, `1+fun(n/2)` 1+ needs to be evaluated. Therefore, keep tracking of pending calculations.
