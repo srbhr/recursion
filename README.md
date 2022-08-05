@@ -113,6 +113,8 @@ int main() {
 
 This is a non-tail recursive function as in the else statement, `1+fun(n/2)` 1+ needs to be evaluated. Therefore, keep tracking of pending calculations.
 
+---
+
 ## Recursive functions with multiple recursive calls.
 
 Let's take the classical example of Fibonacci series.
@@ -136,3 +138,11 @@ It's recursive tree would look like (for fib(6)):
 > ![](src/images/multiple_recursive_calls_fibonacci.png)
 > For multiple recursion calls, which comes first is calculated and returned, and then when the control comes to the original function (which initiated the calls[not main]). Then it calls the next recursion and so on ...
 > Note. tree first operates on n-2 then calls n-1. As in the code and the image.
+
+_For more read these: [1](https://www.quora.com/How-do-functions-with-two-recursive-calls-work) , [2](https://stackoverflow.com/questions/29312260/difficulty-understanding-multiple-recursive-calls) , [3]()_
+
+---
+
+## Recursion on subsequences
+
+**Printing subsequences**
