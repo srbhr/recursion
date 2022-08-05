@@ -1,0 +1,198 @@
+<h1 id="recursion-and-backtracking">Recursion and Backtracking</h1>
+<p>This is prepared with the help of materials from the following sources:</p>
+<ul>
+    <li>
+        <a href="https://web.mit.edu/6.005/www/fa16/classes/14-recursion/">MIT Lecture Notes on Recursion</a>
+    </li>
+    <li>
+        <a href="https://www.youtube.com/playlist?list=PLgUwDviBIf0rGlzIn_7rsaR2FQ5e6ZOL9">Recursion Playlist by
+            TakeUForward</a>
+    </li>
+    <li>
+        Some screenshots are from
+        <a href="https://www.youtube.com/c/nesoacademy">Neso Academy on Youtube</a>
+    </li>
+</ul>
+<h2 id="introduction-and-useful-points">Introduction and Useful Points</h2>
+<ul>
+    <li>Any function which calls itself is called recursive.</li>
+    <li>
+        A recursive method (recursive function) solves a problem by calling a copy of itself. When
+        the call ends, the copy of that returning method is removed from that memory.
+    </li>
+    <li>
+        When a recursive call happens, all the previous function calls keep waiting in the stack
+        memory.
+    </li>
+    <li>
+        Therefore, it&#39;s important to terminate a recursive method. Else, there will be a memory
+        overflow.
+    </li>
+    <li>
+        A recursive function calls itself with a slightly better/solved/simpler version of the
+        problem.
+    </li>
+    <li>
+        The smaller problems should terminate or converge on the base case. At the base case, the
+        function encounters a subtask which it can solve without calling itself.
+    </li>
+</ul>
+<br />
+
+<h2 id="some-examples">Some Examples</h2>
+<h4 id="print-name-n-times-using-recursion">Print &quot;NAME&quot; n times using recursion.</h4>
+<pre><code class="language-java">public class PrintName {
+    static void print(int i, int n) {
+        if (i &gt; n) return;
+
+        System.out.println(&quot;NAME&quot;);
+        print(i+1, n);
+
+        // Notice the extra parameter &#39;i&#39;
+        // being used to measure the recursive calls.
+        // This is called parameterized recursion.
+    }
+
+    public static void main(Sting[] args) {
+        Scanner sc = new Scanner;
+        int n = sc.nextInt(); // take the input for number
+        //of times function will run
+
+        print(1, n); // call the function
+        //print to print name &quot;n&quot; times.
+    }
+}
+</code></pre>
+<h4 id="print-n-to-1-using-recursion">Print N to 1 using recursion.</h4>
+<pre><code class="language-java">public class PrintName {
+    static void print(int n) {
+        if (n &lt; 1) return;
+
+        System.out.println(n);
+        print(n-1);
+
+        // Notice there are no extra parameters
+        // in the function call other than &#39;n&#39;.
+        // This is functional recursion.
+    }
+
+    public static void main(Sting[] args) {
+        Scanner sc = new Scanner;
+        int n = sc.nextInt(); // take the input for
+        //number of times function will run
+
+        print(n); // call the function print to print
+        //n to 1.
+    }
+}
+</code></pre>
+<br />
+
+<h2 id="types-of-recursion">Types of Recursion</h2>
+<p>There are four types of recursion:</p>
+<ol>
+    <li>Direct Recursion</li>
+    <li>Indirect Recursion</li>
+    <li>Tail Recursion</li>
+    <li>Non-Tail Recursion</li>
+</ol>
+<p>
+    <em>For reference please visit <a href="https://www.youtube.com/watch?v=t9whckmAEq0">1</a>,
+        <a href="https://www.youtube.com/watch?v=HIt_GPuD7wk">2</a></em>
+</p>
+<p><strong>Direct Recursion</strong></p>
+<blockquote>
+    <p>A function is called direct recursive if it calls the same function again.</p>
+</blockquote>
+<p><strong>Indirect Recursion</strong></p>
+<blockquote>
+    <p>
+        A function (say f1) is called indirect recursive if it calls a function f2, which calls f1
+        directly or indirectly. There can be more than two functions involved in an indirect
+        recursion.
+    </p>
+</blockquote>
+<p><strong>Tail Recursion</strong></p>
+<blockquote>
+    <p>
+        A function is called tail recursive, if the recursive call is the last thing done by the
+        function. There is no need to keep record of the previous state.
+        <img src="scr/../src/images/tail_recursion_1.png" alt="Example of Tail Recursion" />
+        Note: In the fun(0) line when function simply returns, the control to fun(1) comes back to
+        last line
+        <code>return fun(n-1)</code> after which there is no work to be done. Therefore no record of
+        previous state. PS. Stack assumes that there is some work left in fun(1) ... fun(2)
+        that&#39;s why it keeps them in record.
+    </p>
+</blockquote>
+<p><strong>Non-Tail Recursion</strong></p>
+<blockquote>
+    <p>
+        A function is called tail recursive, if the recursive call is <strong>not</strong> the last
+        thing done by the function. After returning the function call there is some work to
+        evaluate.
+        <img src="src/images/non_tail_recursion_1.png" alt="" />
+        After calling the return on fun(0), control will come back to fun(1) where it&#39;ll
+        evaluate the lines
+        <code>printf(&quot;%d&quot;, n);</code>
+    </p>
+</blockquote>
+<p>Note: <strong>Important Example of a Non-tail Recursive Function</strong></p>
+<pre><code class="language-C">
+int fun(int n) {
+    if (n == 1)
+        return;
+    else
+        return 1+fun(n/2);
+}
+
+int main() {
+    printf(&quot;%d&quot;, fun(8));
+    return 0;
+}
+</code></pre>
+<p>
+    This is a non-tail recursive function as in the else statement, <code>1+fun(n/2)</code> 1+ needs
+    to be evaluated. Therefore, keep tracking of pending calculations.
+</p>
+<br />
+
+<h2 id="recursive-functions-with-multiple-recursive-calls">
+    Recursive functions with multiple recursive calls.
+</h2>
+<p>
+    Let&#39;s take the classical example of Fibonacci series.
+    <em>For reference
+        <a href="https://www.inf.unibz.it/~calvanese/teaching/04-05-ip/lecture-notes/uni10/node23.html">read
+            here</a></em>
+</p>
+<pre><code class="language-Java">public static long fib(long n) {
+  if (n &lt; 0) return -1;  // F(n) is not defined when n is negative
+  if (n == 0)
+    return 0;
+  else if (n == 1)
+    return 1;
+  else
+    return fib(n-2) + fib(n-1);
+}
+</code></pre>
+<p>It&#39;s recursive tree would look like (for fib(6)):</p>
+<blockquote>
+    <p>
+        <img src="src/images/multiple_recursive_calls_fibonacci.png" alt="" /> For multiple
+        recursion calls, which comes first is calculated and returned, and then when the control
+        comes to the original function (which initiated the calls[not main]). Then it calls the next
+        recursion and so on ... Note. tree first operates on n-2 then calls n-1. As in the code and
+        the image.
+    </p>
+</blockquote>
+<p>
+    <em>For more read these:
+        <a href="https://www.quora.com/How-do-functions-with-two-recursive-calls-work">1</a>,
+        <a href="https://stackoverflow.com/questions/29312260/difficulty-understanding-multiple-recursive-calls">2</a>,
+        <a href="">3</a></em>
+</p>
+<br />
+
+<h2 id="recursion-on-subsequences">Recursion on subsequences</h2>
+<p><strong>Printing subsequences</strong></p>
