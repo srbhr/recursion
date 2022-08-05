@@ -14,6 +14,8 @@ This is prepared with the help of materials from the following sources:
 -   A recursive function calls itself with a slightly better/solved/simpler version of the problem.
 -   The smaller problems should terminate or converge on the base case. At the base case, the function encounters a subtask which it can solve without calling itself.
 
+<br>
+
 ## Some Examples
 
 #### Print "NAME" n times using recursion.
@@ -113,7 +115,7 @@ int main() {
 
 This is a non-tail recursive function as in the else statement, `1+fun(n/2)` 1+ needs to be evaluated. Therefore, keep tracking of pending calculations.
 
----
+<br>
 
 ## Recursive functions with multiple recursive calls.
 
@@ -141,7 +143,7 @@ It's recursive tree would look like (for fib(6)):
 
 _For more read these: [1](https://www.quora.com/How-do-functions-with-two-recursive-calls-work) , [2](https://stackoverflow.com/questions/29312260/difficulty-understanding-multiple-recursive-calls) , [3]()_
 
----
+<br>
 
 ## Recursion on subsequences
 
