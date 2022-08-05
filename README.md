@@ -1,5 +1,10 @@
 <h1 align="center">Recursion and Backtracking</h1>
 
+This is prepared with the help of materials from the following sources:
+
+-   https://web.mit.edu/6.005/www/fa16/classes/14-recursion/
+-   https://www.youtube.com/playlist?list=PLgUwDviBIf0rGlzIn_7rsaR2FQ5e6ZOL9
+
 ## Introduction and Useful Points
 
 -   Any function which calls itself is called recursive.
@@ -107,3 +112,27 @@ int main() {
 ```
 
 This is a non-tail recursive function as in the else statement, `1+fun(n/2)` 1+ needs to be evaluated. Therefore, keep tracking of pending calculations.
+
+## Recursive functions with multiple recursive calls.
+
+Let's take the classical example of Fibonacci series.
+_For reference [read here](https://www.inf.unibz.it/~calvanese/teaching/04-05-ip/lecture-notes/uni10/node23.html)_
+
+```Java
+public static long fib(long n) {
+  if (n < 0) return -1;  // F(n) is not defined when n is negative
+  if (n == 0)
+    return 0;
+  else if (n == 1)
+    return 1;
+  else
+    return fib(n-2) + fib(n-1);
+}
+
+```
+
+It's recursive tree would look like (for fib(6)):
+
+> ![](src/images/multiple_recursive_calls_fibonacci.png)
+> For multiple recursion calls, which comes first is calculated and returned, and then when the control comes to the original function (which initiated the calls[not main]). Then it calls the next recursion and so on ...
+> Note. tree first operates on n-2 then calls n-1. As in the code and the image.
