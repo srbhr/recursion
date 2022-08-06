@@ -158,3 +158,5 @@ _For more read these: [1](https://www.quora.com/How-do-functions-with-two-recurs
 ## Recursion on subsequences
 
 **Printing subsequences**
+
+Subsequences are part of the array that have the same sequence as the original array. An empty array can also be a subsequence.
