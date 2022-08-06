@@ -172,3 +172,5 @@ It's subsequence can be:
 What subsequence cannot be:
 [1, 2, 3], [0, 7, 1]... any change in order is not a subsequence.
 ```
+
+In order to generate all subsequences, one can use the [power set algorithm](https://www.geeksforgeeks.org/power-set/) to do so.
