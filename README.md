@@ -159,4 +159,16 @@ _For more read these: [1](https://www.quora.com/How-do-functions-with-two-recurs
 
 **Printing subsequences**
 
-Subsequences are part of the array that have the same sequence as the original array. An empty array can also be a subsequence.
+Subsequences are part of the array that have the same sequence as the original array. An empty array can also be a subsequence. In mathematics, a subsequence of a given sequence is a sequence that can be derived from the given sequence by deleting some or no elements without changing the order of the remaining elements.
+
+E.g.
+
+```
+[3, 1, 2, 7, 0] is an Array (or sequence)
+
+It's subsequence can be:
+[3, 1, 2], [1, 2, 0], [7], [3, 0] ...
+
+What subsequence cannot be:
+[1, 2, 3], [0, 7, 1]... any change in order is not a subsequence.
+```
