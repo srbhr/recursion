@@ -174,3 +174,35 @@ What subsequence cannot be:
 ```
 
 In order to generate all subsequences, one can use the [power set algorithm](https://www.geeksforgeeks.org/power-set/) to do so.
+
+So, recursion on subsequences requires multiple recursive calls. And to print all the subsequences, we'll try to adopt a `take` vs. `not-take` approach for each element in an array.
+
+Take the following piece of code for e.g.
+
+```Java
+public class MyClass {
+    public static void printSubs(int[] arr, int index, ArrayList<Integer> ds ) {
+        if (index == arr.length) {
+            if (ds.size() > 0) {
+                System.out.println(ds);
+            }
+            return;
+        }
+        // the condition to take an
+        // element from the main sequence
+        ds.add(arr[index]);
+        printSubs(arr, index + 1, ds);
+        ds.remove(ds.size() - 1);
+
+        // the condition to not take an
+        // element for the main sequence.
+        printSubs(arr, index + 1, ds);
+    }
+
+    public static void main(Sting[] args) {
+        int[] arr = {3, 1, 2, 4};
+        ArrayList<Integer> ds = new ArrayList<>();
+        printSubs(arr, 0, ds);
+    }
+}
+```
