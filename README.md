@@ -191,15 +191,15 @@ public class MyClass {
         // the condition to take an
         // element from the main sequence
         ds.add(arr[index]);
-        printSubs(arr, index + 1, ds);
+        printSubs(arr, index + 1, ds); // function call - 1
         ds.remove(ds.size() - 1);
 
         // the condition to not take an
         // element for the main sequence.
-        printSubs(arr, index + 1, ds);
+        printSubs(arr, index + 1, ds); // function call - 2
     }
 
-    public static void main(Sting[] args) {
+    public static void main(String[] args) {
         int[] arr = {3, 1, 2, 4};
         ArrayList<Integer> ds = new ArrayList<>();
         printSubs(arr, 0, ds);
@@ -207,6 +207,12 @@ public class MyClass {
 }
 ```
 
+**Output**
+
+![](src/images/Output_print_all_subsequences.png)
+
+Note: In the end the empty space at the end is {}, null set which is a part of subsequence.
+
 In the similar manner we can have print single element, and count all elements whose sum is equal to that particular sum.
 
-The pattern remains the same. And it's going to be very useful in Dynamic Programming.e
+The pattern remains the same. And it's going to be very useful in Dynamic Programming.
