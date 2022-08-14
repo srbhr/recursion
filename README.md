@@ -216,3 +216,49 @@ Note: In the end the empty space at the end is {}, null set which is a part of s
 In the similar manner we can have print single element, and count all elements whose sum is equal to that particular sum.
 
 The pattern remains the same. And it's going to be very useful in Dynamic Programming.
+
+Another example for the above code would be, **Print subsequences whose sum is K**.
+
+The same approach for taking, not taking an element is required here.
+
+```Java
+
+import java.util.*;
+
+public class PrintSubSum {
+    public static void printSubSum(int indx, int[] arr, int k, ArrayList<Integer> ds, int sum) {
+
+        if (indx == arr.length) {
+            if (sum == k ) {
+                System.out.println(ds);
+            }
+            return;
+        }
+
+        ds.add(arr[indx]);
+        sum += arr[indx];
+
+        printSubSum(indx+1, arr, k, ds, sum);
+
+        ds.remove(ds.size()-1);
+        sum-=arr[indx];
+
+        printSubSum(indx+1, arr, k, ds, sum);
+
+    }
+
+    public static void main(String[] args) {
+        int[] arr = {3,1,2,4};
+        int k = 3;
+
+        ArrayList<Integer> ds = new ArrayList<>();
+
+        printSubSum(0, arr, k, ds, 0);
+    }
+}
+
+```
+
+In the above code, we take the same approach to find all the subsets which sum up to a specific sum, k.
+
+Now, let's try some more problems on recursion.
