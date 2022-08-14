@@ -15,27 +15,26 @@ public class CombinationSum {
 
         // edge case if the element we've selected is zero or greater than sum
         if (arr[index] == 0 || arr[index] > sum) {
-            combination(arr, index+1, sum, ds);
+            combination(arr, index + 1, sum, ds);
         }
 
         ds.add(arr[index]);
-        combination(arr, index, sum-arr[index], ds);
-        ds.remove(ds.size()-1);
+        combination(arr, index, sum - arr[index], ds);
+        ds.remove(ds.size() - 1);
 
-        combination(arr, index+1, sum, ds);
-        
+        combination(arr, index + 1, sum, ds);
+
     }
 
     public static void main(String[] args) {
-        int[] arr = {3,1,2,7};
+        int[] arr = { 3, 1, 2, 7 };
         int sum = 7;
 
         ArrayList<Integer> ds = new ArrayList<>();
         combination(arr, 0, sum, ds);
 
-        
     }
-    
+
 }
 
 /* TODO: Improve the code or add the shortcomings in here! */
