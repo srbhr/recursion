@@ -261,7 +261,7 @@ public class PrintSubSum {
 
 In the above code, we take the same approach to find all the subsets which sum up to a specific sum, k.
 
-Now, let's try some more problems on recursion.
+Now, let's try some more problems on recursion. Links to the notes are provided below:
 
 -   [Combination Sum](CombinationSum.md)
 -   [Subset Sum](SubsetSum.md)
